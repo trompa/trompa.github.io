@@ -2,4 +2,4 @@ title: "Trompa's Snippets"
 theme: minima
 plugins:
   - jekyll-feed
-markdown: kramdown
+markdown: noborder_dark

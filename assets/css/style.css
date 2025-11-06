@@ -1,16 +1,24 @@
 body {
   font-family: system-ui, sans-serif;
-  margin: 2rem;
-  background-color: #fdfdfd;
-  color: #333;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  margin: 0;
+  padding: 0;
 }
 
-h1, h2 {
-  color: #005f73;
+main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+header {
+  text-align: center;
+  margin-top: 2rem;
 }
 
 a {
-  color: #0a9396;
+  color: #58a6ff;
   text-decoration: none;
 }
 
