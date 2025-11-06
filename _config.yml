@@ -1,5 +1,5 @@
 title: "Trompa's Snippets"
-theme: minima
+theme: noborder_dark
 plugins:
   - jekyll-feed
-markdown: noborder_dark
+markdown: kramdown
