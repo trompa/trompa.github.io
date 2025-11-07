@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="site-name">
+                <a href="{{ '/' | relative_url }}">Alberto Lago</a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="{{ '/about' | relative_url }}">About</a>
+                <!--a href="{{ '/tags' | relative_url }}">Tags</a-->
+            </nav>
+
+            <div class="tag-list">
+                <h3>Tags</h3>
+                <ul class="post-tags">
+                    {% assign all_tags = site.posts | map: "tags" | join: "," | split: "," | uniq | sort %}
+                    {% for tag in all_tags %}
+                    {% assign trimmed = tag | strip %}
+                    {% if trimmed != "" %}
+                    <li><a href="{{ '/tag/' | append: trimmed | relative_url }}">{{ trimmed }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="social-links">
+                <h3>Connect</h3>
+                <ul>
+                    <li><a href="https://github.com/trompa" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    </li>
+                    <li><a href="https://linkedin.com/in/albertolago" target="_blank"><i class="fab fa-linkedin"></i>
+                            LinkedIn</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="content">
+            {{ content }}
+        </main>
+    </div>
+</body>
+
+</html>

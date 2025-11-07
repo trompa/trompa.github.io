@@ -1,0 +1,146 @@
+/* Base */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: #0d1117;
+  color: #c9d1d9;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background-color: #0f131a; /* darker than #161b22 */
+  padding: 1rem;
+  border-right: 1px solid #2b3137;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+
+.sidebar h3 {
+  font-size: 0.95rem;
+  color: #8b949e;
+  margin-top: 1.5rem;
+}
+
+.sidebar a {
+  color: #c9d1d9;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  color: #58a6ff;
+  text-decoration: underline;
+}
+
+
+/* Navigation */
+.nav-links {
+  margin: 1rem 0;
+}
+
+.nav-links a {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #c9d1d9;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Tags */
+.post-tags,
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-tags li,
+.tag-list li {
+  background-color: #1f2428;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.post-tags a,
+.tag-list a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.post-tags a:hover,
+.tag-list a:hover {
+  background-color: #2b3137;
+  text-decoration: underline;
+}
+
+/* Remove inherited list markers from tag lists */
+/* Remove Hacker theme's >> marker from tag-related lists */
+.post-tags li::marker,
+.tag-list li::marker,
+.nav-links li::marker,
+.social-links li::marker {
+  content: none;
+  color: transparent;
+  font-size: 0;
+}
+
+
+.post-tags,
+.tag-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+}
+
+
+/* Social Links */
+.social-links h3 {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #8b949e;
+}
+
+.social-links ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.social-links li {
+  margin-bottom: 0.4rem;
+}
+
+.social-links a {
+  color: #58a6ff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+.social-links i {
+  margin-right: 0.4rem;
+  color: #8b949e;
+}

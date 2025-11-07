@@ -1,0 +1,23 @@
+---
+layout: default
+title: "Alberto's Snippets"
+---
+
+<h1>Recent Posts</h1>
+
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <span class="post-date">{{ post.date | date: site.date_format }}</span>
+      {% if post.tags %}
+        <ul class="post-tags">
+          {% for tag in post.tags %}
+            <li><a href="{{ '/tag/' | append: tag | relative_url }}">{{ tag }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>

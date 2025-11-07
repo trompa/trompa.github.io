@@ -1,0 +1,16 @@
+---
+layout: default
+---
+
+<h1>Posts tagged "{{ page.tag }}"</h1>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+    {% if post.tags contains page.tag %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="post-date">{{ post.date | date: site.date_format }}</span>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
