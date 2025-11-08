@@ -6,6 +6,7 @@ LAYOUT="tag"
 
 # Create tag directory if it doesn't exist
 mkdir -p "$TAG_DIR"
+rm -rf "$TAG_DIR"/*
 
 # Extract all tags from posts
 TAGS=$(grep -h '^tags:' _posts/*.md | \
