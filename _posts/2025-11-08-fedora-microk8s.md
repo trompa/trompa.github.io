@@ -9,7 +9,17 @@ Kubernetes has become the de facto standard for container orchestration, enablin
 
 MicroK8s is distributed via Snap, a universal package manager that provides self-contained software packages. Snap packages include all their dependencies, siming to make them work consistently across different Linux distributions. While this approach ensures compatibility, installing MicroK8s on Fedora requires a few specific steps.
 
-In this post, I'll walk through the process I followed to successfully install and run MicroK8s on Fedora, highlighting the challenges and solutions along the way.
+In this post, I'll walk through the process I followed to successfully install and run MicroK8s on Fedora, highlighting the challenges and solutions along the way.  
+If you already have MicroK8s installed and are experiencing DNS issues, you can skip directly to [Fixing DNS](#fixing-dns) section. 
+
+
+## Prerequisites
+
+Before proceeding with the installation, ensure your system meets these requirements:
+- Fedora 35 or later
+- At least 4GB of RAM
+- At least 20GB of available disk space
+- Admin (sudo) privileges
 
 ## Installing Snap
 
@@ -106,7 +116,7 @@ firewall-cmd --reload
 ## Kubernetes Dashboard
 
 ```bash
-
+sudo vim /var/snap/microk8s/common/addons/core/addons/dashboard/enable
 ```
 
 ```bash
@@ -117,6 +127,9 @@ $HELM upgrade --install kubernetes-dashboard kubernetes-dashboard \
   --set kong.env.ADMIN_LISTEN="0.0.0.0:8444 http2 ssl"
 ```
 
+```bash
+kubectl create token default
+```
 
 ```bash
 kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard-kong-proxy 10443:443

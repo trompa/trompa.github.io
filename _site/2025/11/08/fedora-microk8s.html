@@ -79,7 +79,18 @@
 
 <p>MicroK8s is distributed via Snap, a universal package manager that provides self-contained software packages. Snap packages include all their dependencies, siming to make them work consistently across different Linux distributions. While this approach ensures compatibility, installing MicroK8s on Fedora requires a few specific steps.</p>
 
-<p>In this post, I’ll walk through the process I followed to successfully install and run MicroK8s on Fedora, highlighting the challenges and solutions along the way.</p>
+<p>In this post, I’ll walk through the process I followed to successfully install and run MicroK8s on Fedora, highlighting the challenges and solutions along the way.<br />
+If you already have MicroK8s installed and are experiencing DNS issues, you can skip directly to <a href="#fixing-dns">Fixing DNS</a> section.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Before proceeding with the installation, ensure your system meets these requirements:</p>
+<ul>
+  <li>Fedora 35 or later</li>
+  <li>At least 4GB of RAM</li>
+  <li>At least 20GB of available disk space</li>
+  <li>Admin (sudo) privileges</li>
+</ul>
 
 <h2 id="installing-snap">Installing Snap</h2>
 
@@ -164,7 +175,7 @@ firewall-cmd <span class="nt">--reload</span>
 
 <h2 id="kubernetes-dashboard">Kubernetes Dashboard</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>vim /var/snap/microk8s/common/addons/core/addons/dashboard/enable
 </code></pre></div></div>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$HELM</span> upgrade <span class="nt">--install</span> kubernetes-dashboard kubernetes-dashboard <span class="se">\</span>
@@ -172,6 +183,9 @@ firewall-cmd <span class="nt">--reload</span>
   <span class="nt">--create-namespace</span> <span class="nt">--namespace</span> <span class="s2">"kubernetes-dashboard"</span> <span class="se">\</span>
   <span class="nt">--set</span> kong.env.dns_order<span class="o">=</span><span class="s2">"LAST</span><span class="se">\,</span><span class="s2">A</span><span class="se">\,</span><span class="s2">CNAME</span><span class="se">\,</span><span class="s2">SRV"</span> <span class="se">\</span>
   <span class="nt">--set</span> kong.env.ADMIN_LISTEN<span class="o">=</span><span class="s2">"0.0.0.0:8444 http2 ssl"</span>
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl create token default
 </code></pre></div></div>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl port-forward <span class="nt">-n</span> kubernetes-dashboard service/kubernetes-dashboard-kong-proxy 10443:443
